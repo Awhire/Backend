@@ -295,7 +295,7 @@ process.on('beforeExit', (code) => {
 
 
 // Parsing Arguments
-// You can parse arguments using the process.argv property. It will return an array ofarguments, where the first will be the location of Node.js, and the second will be the location of the currently executing file.
+// You can parse arguments using the process.argv property. It will return an array of arguments, where the first will be the location of Node.js, and the second will be the location of the currently executing file.
 console.log(process.argv)
 
 
@@ -311,3 +311,102 @@ parser.add_argument('-g', {help: "Enter a value of g"})
 let args = parser.parse_args();
 
 console.log(parseInt(args.g) + parseInt(args.foo))
+
+
+// Event-driven Programming
+// is a programming paradigm in which the flow of the program is control by external events.
+
+// Node.js Events
+import { EventEmitter } from "events"
+// The EventEmitter is a special class in Node.js that is used to emit an event. The EventEmitter class enable you to send an event to the group of event handled by the event loop.
+const myEventEmitter = new EventEmitter
+
+function notifyConnection(ip) {
+    console.log(ip + " connected to server")
+}
+
+myEventEmitter.on("connection", notifyConnection)
+
+myEventEmitter.emit("connection", "127.0.0.1")
+
+
+// Synchronous Events
+function notifyConnection1(ip) {
+    console.log(ip + " connected to server")
+}
+
+async function process1(ip) {
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    console.log(ip + " has connected") 
+}
+
+myEventEmitter.on("connection1", notifyConnection1)
+myEventEmitter.on("connection1", process1)
+
+myEventEmitter.emit("connection1", "127.0.0.1")
+myEventEmitter.emit("connection1", "192.168.0.1")
+
+
+// Publisher-Subscriber Model
+// What is pub-sub model? well we have two component, a Publisher and Subscriber. Publisher sends messages and Subscriber recieves messages.
+import { Publisher } from "./Publisher.js"
+import { Subscriber } from "./Subscriber.js"
+// import { EventEmitter } from "events";
+const myEmitter = new EventEmitter();
+
+const publisher = new Publisher();
+const subscriber = new Subscriber(myEmitter);
+
+publisher.publishMessage(myEmitter)
+
+
+// Project: Event-publisher Reminders
+ import { Subscriber1, Publisher1 } from "./PubSub.js"
+
+const publisher1 = new Publisher1();
+const subscriber1 = new Subscriber1("event1");
+const sub2 = new Subscriber1("event2");
+
+publisher1.publishReminder("event1", "Event1 is has ended!")
+publisher1.publishReminder("event2", "Event2 is starting soon!")
+
+
+// The Net Module
+// Its Enable networking capabilities in Node.js. Net module is used to creates clients and server for network communication using a protocol called Transmission Control Protocol (TCP)
+// TCP is used to transmit data between devices, over network. TPC provides stateful networking i.e a networking that works with state. It allows you to keep track of the state of transaction. So there's a lot of protcols that use TCP. There's HTTP, FTP, SMTP, SSH.
+
+// TCP Server (Creating TCP server)
+// (Connected to the TCP client running on the port to which the server is listening) Server and Client file is created and they client send a request to connect to the server port.
+
+// TCP Client
+// Establish communication between client and server using Sockets. Sockets stream data between client and server, where data is not sent in one piece.
+
+
+// Introduction to DNS
+// DNS is known as Domin Name System, it is used primarily to translate domain name into IP address.
+// When you type a domain name, you must translate it into IP address to send the traffic to the DNS server. DNS server are not limited to the conversion of domain name to IP addresses; they also store a fair amount of data in records, records like "A Records" "MX Records"
+
+
+// Creating a Chat Application
+// The application will function like:- 1. User can connect to the server. 2. User can send message. 3. The message is broadcast to all the users who are currently connected to the server. (go to server & client files)
+
+
+// Introduction to HTTP and HTTPS
+// HTTP stands for  "Hyper Text Transfor Protocol" and it is used to exchange data between clients and servers. It is more like media data, things like web pages, images or videos and this type of data is transmitted through hypertext transfer protocol. HTTP is a TCP protocol, it runs on port 80 as well as prt 8080.
+// There are a lot of different HTTP requests with special names. Four of them are:- 1. GET: used to retrieved data. 2. POST: Used to send data 3. PUT: To update data. 4. DELETE: used to delete data from the database.
+// Common status code: 1. 100-150-199 (informational). 2. 200-250-299 (Success case). 3. 300-350-399 (Redirect). 4. 400-450-499 (Client error). 5. 500-550-599 (Server error).
+
+// HTTPS is a variation of HTTP that provides encryptption for data. HTTP encrypts the data sent between the client and server. Even if someone sits in the middle of the communication, they will not see the data.
+// HTTPS is used in modern web applications. information critical security (e.g sending a username and password to a server) needs to be encrypted
+
+// Basic HTTP Server Setup
+// HTTP Headers: can be used to provide additional information to the server about what you are sending/requesting such as data formats, Retrieve/send data. Also the server can use the header to send back information to the client, Like if the request was successful or unsuccessful.
+
+// Request Processing (back to server.js)
+// Processing GET Requests 
+
+// Basic of HTTPS (secSever.js file)
+// The key allows encryption and decryption; the certicate contains information about the server to help verify the server identity. 
+
+// Project: Creating a HTTP Server(Part 1)(httpServer.js file)
+
