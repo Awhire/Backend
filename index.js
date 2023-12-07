@@ -263,7 +263,7 @@ import readline from "readline"
 let rl = readline.createInterface(process.stdin, process.stdout);
 
 rl.question("What is your name?", (name) => {
-    rl.write("Your name is: " + name)
+   cr
     // console.log("Your name is:" + name)
     rl.close()
 })
@@ -410,3 +410,32 @@ publisher1.publishReminder("event2", "Event2 is starting soon!")
 
 // Project: Creating a HTTP Server(Part 1)(httpServer.js file)
 
+
+
+ 
+
+
+// Introduction to HTTP2  (Version 2)
+// What is HTTP/2? Is a revised version of HTTP provides addition features for speed. Data in HTTP/2 comes in streams rather than like a big piece of data as in HTTP/1.
+// The main idea of HTTP/2 is to avoid making the web application providers to rewrite their applications but to provide benefit to enhance the speed and functionality of HTTP. 
+// Ways it works:- 1. HTTP/2 allows servers to push content and supply data before requests. 2. Tries to avoid Head-of-line blocking. 3. Multiple request are multiplexed over a single TCP connection. Rather everyone having their own TCP connection with the server, the request are coming from piecewise, streamed into the actual HTTP serve.
+// Everything start to work in the synchronous stream-based nethod, rather than the HTTP/1, where it was more like it's own connection, and there wasn't as mush of this stream type of idea in the data collection.
+
+// Creating an HTTP2 Server (http2server.js file)
+// Creating an HTTP2 Client (http2Client.js file)
+
+// Routing data :- Routing is determining where the data should go depending on the path requested by the user
+
+// -----------------
+// Project: Client and Server (Part 1) (To http2Server.js file)
+// Project: Client and Server (Part 2) (To http2Client.js file)
+
+
+
+// Ciphers
+// General idea of cryptography is to allow encryption and decryption. Original data > Encryption Algorithm > Encrypted data.
+// Two main categories of cryptography
+// 1. Symmetric key encryption : meas that a single key is used for encryption and decryption. 2. Asymmetric ket encryption : used separate key to encrypt and decrypt. Math is involved in creating these keys.
+// Hashing : is a type of encryption. It is  a one-way process to encrypt the data. Hashing is done such that we create something that cannot be decoded at all.
+
+// Encryption and Decryption with the Crypto Module
