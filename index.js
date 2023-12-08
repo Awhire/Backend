@@ -435,7 +435,57 @@ publisher1.publishReminder("event2", "Event2 is starting soon!")
 // Ciphers
 // General idea of cryptography is to allow encryption and decryption. Original data > Encryption Algorithm > Encrypted data.
 // Two main categories of cryptography
-// 1. Symmetric key encryption : meas that a single key is used for encryption and decryption. 2. Asymmetric ket encryption : used separate key to encrypt and decrypt. Math is involved in creating these keys.
+// 1. Symmetric key encryption : means that a single key is used for encryption and decryption. 2. Asymmetric key encryption : used separate key to encrypt and decrypt. Math is involved in creating these keys.
 // Hashing : is a type of encryption. It is  a one-way process to encrypt the data. Hashing is done such that we create something that cannot be decoded at all.
 
-// Encryption and Decryption with the Crypto Module
+// Encryption and Decryption with the Crypto Module(go to cypto.js file)
+// Hashing - Crypto and Web Crypto API (hashcrypto.js file)
+// Web crypto API (webCrypto.js file) : can be used independently of Node.js and can be supported by every browser. It is a standard framework used throughout each processfor crypto because it can be used regardless of support level.
+
+// Project: Hashing passwords for user registration(hashPasswordReg.js file)
+
+// Workers and clusters : Node.js has a cluster module for child processes.
+// We can split the parent process into one or more child processes. These child processes can process some amouts of data and merge them into one big process to ge the result.
+// A worker is a child process of a parent. The cluster helps to manage different pieces to help them connect and communicate with each other.
+// Creating a basic worker and cluster
+
+
+// Interprocess communication : The general goal of interprocess communication is to allow child and parent processes to communicate with each other. (icp.js file)
+
+
+// Process management with Node.js
+// PM2 utility allow us to manage the processesfor Node application. PM2 can help us manage our processes 'uptimeto ensure that the processes are not crashiing to keep them up an running consistently.
+
+// Recipe: Speeding up Fibonacci Calculation (fibonacci.js file)
+import {Worker} from 'worker_threads'
+
+const runFibonnaci = (nums) => {
+    let length = nums.length
+ 
+    let size = Int32Array.BYTES_PER_ELEMENT * length
+
+    let sharedBuffer = new SharedArrayBuffer(size);
+    let sharedArray = new Int32Array(sharedBuffer);
+
+    for(let i = 0; i < length; i++){
+        Atomics.store(sharedArray, i, nums[i]);
+        let worker = new Worker('./fibonacci.js');
+
+        worker.once('message', (message) => {
+            console.log(message);
+        });
+
+    worker.postMessage({data:sharedArray, index:i});
+    }
+}
+
+runFibonnaci([50,20,21,24,4])
+// A multi-threaded setup, where each application instance runs through the array and create  a new instance. The new instance calculate its Fibonacci, All instances are separated threads. This provide ability to run to run multiple Fibonacci sequence at the same time.
+
+
+// Project: Server Client Architecture with Clusters (Part 1) (serverArc.js & clientArc.js)
+// We have a large set of processes available to haandle the data, and we can send many different requests out to those processes and get many different responses as a result. 
+
+
+// Debugging and Testing, Step through code (testFile.js)
+

@@ -15,4 +15,18 @@ function encrypt(text) {
     return {iv: iv.toString('hex'), encryptedData: encrypted.toString('hex')}
 }
 
-console.log(encrypt('text'))
+function decrypt(text){
+    let iv = Buffer.from(text.iv, 'hex')
+    let encryptedText = Buffer.from(text.encryptedData, "hex");
+
+    let decipher = crypto.createDecipheriv(algorithm, Buffer.from(key), iv)
+    let decrypted = decipher.update(encryptedText)
+    decrypted = Buffer.concat([decrypted, decipher.final()])
+
+    return decrypted.toString();
+}
+
+let output = encrypt('promising')
+console.log(output)
+
+console.log(decrypt(output))
