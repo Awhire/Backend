@@ -489,3 +489,8 @@ runFibonnaci([50,20,21,24,4])
 
 // Debugging and Testing, Step through code (testFile.js)
 
+// Introduction to Jest
+// Illustration of jest (file basicTest.spec.js and test.spec.js) 
+
+
+
