@@ -493,4 +493,12 @@ runFibonnaci([50,20,21,24,4])
 // Illustration of jest (file basicTest.spec.js and test.spec.js) 
 
 
+// Introduction to Express Framework
+// Deploying of Node.js Application
+// Broad goal for a Node.js web application framework(Express, Koa, hapi). 1. Enable implemention of time-tested design patterns such a Model-View-Controller & module code. 2. Allow ample flexibility to implement custom patterns without compromising on stability and performance. 3. Offer function to easily spawn web servers, parse from data and return structured response. 4. Impement routing. 5. Enable you to build REST APIs that handle HTTP verbs =GET, POST , PUT and DELETE and multipage websites. 6. Make it easy to render dynamic data allowing developers to inject data fetchd from database and other resources. 7. Allow developers to implement server-side sessions and cookies for persisting data across pages and routes. 8. Allow developer to tap into the raw request and response objet. 9. Encourage a community of developers who contribute back to the ecosystem for plugins and extensions
 
+
+// BYOF - Build Your Own Framework
+
+// CreateServer : Allow us to instantiate HTTP Server which procide access to incoming streaming of data and allow us to respond using Response stream.
+// Contination of creating a framework is on ExpressFrameWork project.
